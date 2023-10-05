@@ -1,4 +1,4 @@
-class Board {
+export default class Board {
   constructor(layout,containerSelector,pacman) {
     this.layout = layout;
     this.container = document.querySelector(containerSelector);
@@ -47,5 +47,3 @@ class Board {
     this.pacman.directionChange(this.pacman.direction,true);
   }
 }
-
-export default Board;

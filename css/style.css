@@ -36,6 +36,10 @@ body {
     height: 40px;
 }
 
+.pacman-score p {
+    word-break: break-all;
+}
+
 .row
 {
 	display: flex;

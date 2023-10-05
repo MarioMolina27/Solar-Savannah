@@ -1,11 +1,11 @@
 import Board from './objects/board.js';
 import Pacman from './objects/pacman.js';
-import {grid,layout} from './config.js';
+import * as all from "./config.js";
 import { inputDetected } from './input.js';
 
 const pacmanPlayer = new Pacman();
 createHearts(pacmanPlayer);
-const gameBoard = new Board(layout, grid,pacmanPlayer);
+const gameBoard = new Board(all.layout, all.grid,pacmanPlayer);
 gameBoard.printBoard();
 
 

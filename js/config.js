@@ -35,3 +35,10 @@ export const layout = [
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]   // 32
   ]
   // 0 = point ; 1 = wall ; 2 = enemy-lair ; 3 = powerup ; 4 = empty 5 = pacman;
+
+  export const point = 0;
+  export const wall = 1;
+  export const enemy_lair = 2;
+  export const powerup = 3;
+  export const empty = 4;
+  export const pacman = 5;
