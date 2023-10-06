@@ -5,15 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PacMan-Like</title>
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
 </head>
 <body>
    <div class="game-container">
-        <div class="pacman-lifes"></div>
-        <div class="map"></div>
-        <div class="pacman-score">
-            <p>0 pt</p>
+        <div class="gameStadistics">
+            <div class="pacman-lifes"></div>
+            <div class="pacman-time">
+                <p id="timerHours">00:</p>
+                <p id="timerMinutes">00:</p>
+                <p id="timerSeconds">00</p>
+            </div>
+            <div class="pacman-score">
+                <p>SCORE: </p>
+                <p>0 pt</p>
+            </div>
         </div>
-        <div class="timer"></div>
+        <div class="map"></div>
+       
    </div>
     <script type="module" src="js/main.js"></script>
 </body>

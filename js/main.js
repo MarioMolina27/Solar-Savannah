@@ -2,6 +2,7 @@ import Board from './objects/board.js';
 import Pacman from './objects/pacman.js';
 import * as all from "./config.js";
 import { inputDetected } from './input.js';
+import {startTimer} from './timer.js';
 
 const pacmanPlayer = new Pacman();
 createHearts(pacmanPlayer);
@@ -33,3 +34,4 @@ function gameLoop()
 }
 
 setInterval(gameLoop,1000);
+setInterval(startTimer,1000);
