@@ -12,10 +12,12 @@ export function startTimer()
     if(seconds===60)
     {
         minutes++;
+        seconds=0;
     }
     if(minutes===60)
     {
         hours++;
+        minutes=0;
     }
 
     let formattedHours = (hours < 10) ? "0" + hours : hours;
