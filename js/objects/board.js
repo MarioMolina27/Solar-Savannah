@@ -36,6 +36,9 @@ export default class Board {
             cellElement.classList.add("pacman");
             cellElement.id = "pacman";
             break;
+          case 6:
+            cellElement.classList.add("enemy");
+            break;
         }
 
         rowElement.appendChild(cellElement);
@@ -43,7 +46,7 @@ export default class Board {
 
       this.container.appendChild(rowElement);
     });
-    this.pacman.pacmanElement =  document.getElementById('pacman');
+    this.pacman.divElement =  document.getElementById('pacman');
     this.pacman.directionChange(this.pacman.direction,true);
   }
 }

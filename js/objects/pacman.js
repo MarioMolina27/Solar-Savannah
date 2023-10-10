@@ -1,14 +1,11 @@
 import {layout} from '../config.js';
 import {nextObjectEvent} from '../events.js';
+import Entity from './entity.js';
 
- export default class Pacman {
+ export default class Pacman extends Entity {
     constructor() {
-        this.x = null; 
-        this.y = null; 
-        this.direction = "down"; 
+        super(5);
         this.lifes = 3;
-        this.boardNum = 5;
-        this.pacmanElement = null;
         this.score = 0;
         this.searchPosition();
         this.board = null;
@@ -18,7 +15,7 @@ import {nextObjectEvent} from '../events.js';
         switch (newDirection) {
             case "up":
                 this.direction = "up";
-                this.pacmanElement.style.transform = "rotate(-90deg)"; 
+                this.divElement.style.transform = "rotate(-90deg)"; 
                 if(!rePrintBoard)
                 {
                     this.moveUp();
@@ -26,7 +23,7 @@ import {nextObjectEvent} from '../events.js';
                 break;
             case "down":
                 this.direction = "down";
-                this.pacmanElement.style.transform = "rotate(90deg)"; 
+                this.divElement.style.transform = "rotate(90deg)"; 
                 if(!rePrintBoard)
                 {
                     this.moveDown();
@@ -34,7 +31,7 @@ import {nextObjectEvent} from '../events.js';
                 break;
             case "left":
                 this.direction = "left";
-                this.pacmanElement.style.transform = "rotate(180deg)";
+                this.divElement.style.transform = "rotate(180deg)";
                 if(!rePrintBoard)
                 {
                     this.moveLeft();
@@ -42,7 +39,7 @@ import {nextObjectEvent} from '../events.js';
                 break;
             case "right":
                 this.direction = "right";
-                this.pacmanElement.style.transform = "rotate(0deg)";
+                this.divElement.style.transform = "rotate(0deg)";
                 if(!rePrintBoard)
                 {
                     this.moveRight();

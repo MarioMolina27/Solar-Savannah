@@ -68,15 +68,20 @@ p
 	flex-direction:row ;
 }
 
-.point,.wall, .powerup, .empty ,.enemy-lair, #pacman{
-    width: 18px;
-    height: 18px;
+.point,.wall, .powerup, .empty ,.enemy-lair, #pacman ,.enemy{
+    width: 19px;
+    height: 19px;
     border-radius: 3px;
 }
 
 .pacman
 {
     content: url("../media/img/pacman.gif");
+}
+
+.enemy
+{
+    content: url("../media/img/lion.gif");
 }
 
 
