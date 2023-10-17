@@ -8,7 +8,6 @@ import Entity from './entity.js';
         this.lifes = 3;
         this.score = 0;
         this.searchPosition();
-        this.board = null;
     }
 
     directionChange = (newDirection,rePrintBoard) =>{

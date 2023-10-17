@@ -1,8 +1,9 @@
 export default class Board {
-  constructor(layout,containerSelector,pacman) {
+  constructor(layout,containerSelector,pacman,enemies) {
     this.layout = layout;
     this.container = document.querySelector(containerSelector);
     this.pacman = pacman;
+    this.enemies= enemies;
     this.pacman.board = this;
   }
 
