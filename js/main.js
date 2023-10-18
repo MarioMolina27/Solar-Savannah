@@ -11,7 +11,8 @@ const gameBoard = new Board(all.layout, all.grid,pacmanPlayer);
 gameBoard.pacman.createHearts();
 gameBoard.printBoard();
 
-
+export let gameLoopInterval;
+export let timerInterval;
 
 document.addEventListener('keydown', function(event) {
     inputDetected(event, gameBoard.pacman);
@@ -44,5 +45,5 @@ function gameLoop()
     gameBoard.printBoard();
 }
 
-setInterval(gameLoop,1000);
-setInterval(startTimer,1000);
+gameLoopInterval = setInterval(gameLoop,1000);
+timerInterval = setInterval(startTimer,1000);

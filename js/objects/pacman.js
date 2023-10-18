@@ -110,6 +110,7 @@ import Entity from './entity.js';
         const nextX = this.x - 1;
         
         if (nextX >= 0 && layout[this.y][nextX] !== 1 && layout[this.y][nextX] !==6) {  
+            nextObjectEvent(this,layout[this.y][nextX]); 
             layout[this.y][this.x] = 4;
             this.x = nextX;
             layout[this.y][this.x] = this.boardNum;
@@ -129,6 +130,7 @@ import Entity from './entity.js';
         
         if (nextY >= 0 && layout[nextY][this.x] !== 1 && layout[nextY][this.x] !== 6) 
         {
+            nextObjectEvent(this,layout[nextY][this.x]);
             layout[this.y][this.x] = 4;
             this.y = nextY;
             layout[this.y][this.x] = this.boardNum;
@@ -145,7 +147,7 @@ import Entity from './entity.js';
         const nextY = this.y + 1;
     
         if (nextY < layout.length && layout[nextY][this.x] !== 1 && layout[nextY][this.x] !== 6) {
-            
+            nextObjectEvent(this,layout[nextY][this.x]); 
             layout[this.y][this.x] = 4;
     
             this.y = nextY;
@@ -167,7 +169,7 @@ import Entity from './entity.js';
        
         if (nextX < layout[0].length && layout[this.y][nextX] !== 1 && layout[this.y][nextX] !== 6) {
              
-           
+            nextObjectEvent(this,layout[this.y][nextX]); 
             layout[this.y][this.x] = 4;
     
             this.x = nextX;
