@@ -5,43 +5,76 @@ import Entity from './entity.js';
  export default class Pacman extends Entity {
     constructor() {
         super(5);
+        this.xOriginal = null;
+        this.yOriginal = null;
         this.lifes = 3;
+        this.currentLifes= this.lifes;
         this.score = 0;
         this.searchPosition();
+        this.powerUpActive = false;
+        this.canMove = true;  
     }
 
     directionChange = (newDirection,rePrintBoard) =>{
         switch (newDirection) {
             case "up":
-                this.direction = "up";
-                this.divElement.style.transform = "rotate(-90deg)"; 
-                if(!rePrintBoard)
+                if(this.canMove)
                 {
-                    this.moveUp();
+                    this.direction = "up";
+                    this.divElement.style.transform = "rotate(-90deg)"; 
+                    if(!rePrintBoard)
+                    {
+                        this.moveUp();
+                    }
+                }
+                else
+                {
+                    console.log("no te puedes mover");
                 }
                 break;
             case "down":
-                this.direction = "down";
-                this.divElement.style.transform = "rotate(90deg)"; 
-                if(!rePrintBoard)
+                if(this.canMove)
                 {
-                    this.moveDown();
+                    this.direction = "down";
+                    this.divElement.style.transform = "rotate(90deg)"; 
+                    if(!rePrintBoard)
+                    {
+                        this.moveDown();
+                    }
+                }
+                else
+                {
+                    console.log("no te puedes mover");
                 }
                 break;
             case "left":
-                this.direction = "left";
-                this.divElement.style.transform = "rotate(180deg)";
-                if(!rePrintBoard)
+                if(this.canMove)
                 {
-                    this.moveLeft();
+                    this.direction = "left";
+                    this.divElement.style.transform = "rotate(180deg)";
+                    if(!rePrintBoard)
+                    {
+                        this.moveLeft();
+                    }
+                }
+                else
+                {
+                    console.log("no te puedes mover");
                 }
                 break;
             case "right":
-                this.direction = "right";
-                this.divElement.style.transform = "rotate(0deg)";
-                if(!rePrintBoard)
+                if(this.canMove)
                 {
-                    this.moveRight();
+                    this.direction = "right";
+                    this.divElement.style.transform = "rotate(0deg)";
+                    if(!rePrintBoard)
+                    {
+                        this.moveRight();
+                    }
+                }
+                else
+                {
+                    console.log("no te puedes mover");
                 }
                 break;
         }
@@ -59,7 +92,9 @@ import Entity from './entity.js';
             do {
                 if (layout[i][j] === this.boardNum) {
                     this.x = j; 
+                    this.xOriginal = this.x;
                     this.y = i; 
+                    this.yOriginal = this.y;
                     found = true; 
                 }
                 j++;
@@ -74,8 +109,7 @@ import Entity from './entity.js';
        
         const nextX = this.x - 1;
         
-        if (nextX >= 0 && layout[this.y][nextX] !== 1) {
-            nextObjectEvent(this,layout[this.y][nextX]);  
+        if (nextX >= 0 && layout[this.y][nextX] !== 1 && layout[this.y][nextX] !==6) {  
             layout[this.y][this.x] = 4;
             this.x = nextX;
             layout[this.y][this.x] = this.boardNum;
@@ -85,6 +119,7 @@ import Entity from './entity.js';
         {
             console.log("Colisión");
         }
+        nextObjectEvent(this,layout[this.y][nextX]); 
     }
 
     moveUp = () => {
@@ -92,36 +127,36 @@ import Entity from './entity.js';
         const nextY = this.y - 1;
     
         
-        if (nextY >= 0 && layout[nextY][this.x] !== 1) {
-            nextObjectEvent(this,layout[nextY][this.x]);  
+        if (nextY >= 0 && layout[nextY][this.x] !== 1 && layout[nextY][this.x] !== 6) 
+        {
             layout[this.y][this.x] = 4;
-    
-           
             this.y = nextY;
-    
-            
             layout[this.y][this.x] = this.boardNum;
-        } else {
+        } 
+        else 
+        {
             console.log("Colisión");
         }
-    
+        nextObjectEvent(this,layout[nextY][this.x]); 
         this.board.printBoard();
     }
     
     moveDown = () => {
         const nextY = this.y + 1;
     
-        if (nextY < layout.length && layout[nextY][this.x] !== 1) {
-            nextObjectEvent(this,layout[nextY][this.x]);  
+        if (nextY < layout.length && layout[nextY][this.x] !== 1 && layout[nextY][this.x] !== 6) {
+            
             layout[this.y][this.x] = 4;
     
             this.y = nextY;
 
             layout[this.y][this.x] = this.boardNum;
-        } else {
+        } 
+        else 
+        {
             console.log("Colisión");
         }
-    
+        nextObjectEvent(this,layout[nextY][this.x]); 
         this.board.printBoard();
     }
     
@@ -130,18 +165,54 @@ import Entity from './entity.js';
         const nextX = this.x + 1;
     
        
-        if (nextX < layout[0].length && layout[this.y][nextX] !== 1) {
-            nextObjectEvent(this,layout[this.y][nextX]);  
+        if (nextX < layout[0].length && layout[this.y][nextX] !== 1 && layout[this.y][nextX] !== 6) {
+             
            
             layout[this.y][this.x] = 4;
     
             this.x = nextX;
     
             layout[this.y][this.x] = this.boardNum;
-        } else {
+        } 
+        else 
+        {
             console.log("Colisión");
         }
-    
+        nextObjectEvent(this,layout[this.y][nextX]); 
         this.board.printBoard();
     }
+
+    createHearts = () => 
+    {
+        const pacmanLifes = document.querySelector(".pacman-lifes");
+        pacmanLifes.innerHTML = "";
+        for(let i =1;i<=this.lifes;i++)
+        {
+            if(i<=this.currentLifes)
+            {
+                const heart = document.createElement('img');
+                heart.classList.add("heart");
+                heart.src = './media/img/heart.png';
+                heart.alt = '';
+                pacmanLifes.appendChild(heart);
+            }
+            else
+            {
+                const heart = document.createElement('img');
+                heart.classList.add("heart");
+                heart.src = './media/img/heartvoid.png';
+                heart.alt = '';
+                pacmanLifes.appendChild(heart);
+            }
+            
+        }
+    }
+
+    returnOriginalPosition = () => {
+            layout[this.y][this.x] = 4;
+            console.log(this.xOriginal + " - " + this.yOriginal);
+            this.x = this.xOriginal;
+            this.y = this.yOriginal;
+            layout[this.y][this.x] = 5;
+        }
 }

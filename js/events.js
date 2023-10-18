@@ -1,3 +1,5 @@
+import { pacman } from "./config.js";
+
 export function nextObjectEvent(pacmanPlayer,num)
 {
     const score = document.querySelector(".pacman-score p:last-child");
@@ -7,8 +9,14 @@ export function nextObjectEvent(pacmanPlayer,num)
             const scoreText = pacmanPlayer.score + " pt";
             score.innerHTML = `${pacmanPlayer.score} pt`;
             break;
-        case 3:
-           
+        case 6:
+            pacmanPlayer.canMove = false; 
+            setTimeout(() => {
+                pacmanPlayer.canMove = true; 
+            }, 1000);
+            pacmanPlayer.currentLifes--;
+            pacmanPlayer.createHearts();
+            pacmanPlayer.returnOriginalPosition();
             break;
     }
 }

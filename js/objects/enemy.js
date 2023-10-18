@@ -5,7 +5,8 @@ export default class Enemy extends Entity {
     constructor(numEnemy) {
         super(6);
         this.numEnemy = numEnemy;
-        this.originalNumber = 0; 
+        this.originalNumber; 
+        this.aux = 0;
     }
 
     moveRandomly() {
@@ -20,8 +21,6 @@ export default class Enemy extends Entity {
         let newX = this.x;
         let newY = this.y;
 
-        
-        
         // Calcula la nueva posición según la dirección aleatoria
         if (randomDirection === 'up') {
             newY--;
@@ -32,9 +31,7 @@ export default class Enemy extends Entity {
         } else if (randomDirection === 'right') {
             newX++;
         }
-
         this.originalNumber = layout[newY][newX];
-        console.log(this.numEnemy+" - "+this.originalNumber)
 
         if (
             newX >= 0 &&
@@ -44,8 +41,8 @@ export default class Enemy extends Entity {
             [0, 2, 3, 4].includes(layout[newY][newX]) // Asegúrate de que la nueva posición sea 0, 2, 3 o 4
         ) 
         {
-
-            layout[this.y][this.x] = this.originalNumber;
+            layout[this.y][this.x] = this.aux;
+            this.aux = this.originalNumber;
             this.x = newX;
             this.y = newY;
             layout[this.y][this.x] = this.boardNum;

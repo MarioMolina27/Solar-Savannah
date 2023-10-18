@@ -6,29 +6,17 @@ import {startTimer} from './timer.js';
 import Enemy from './objects/enemy.js';
 
 const pacmanPlayer = new Pacman();
-createHearts(pacmanPlayer);
 let enemies = findEnemies();
 const gameBoard = new Board(all.layout, all.grid,pacmanPlayer);
+gameBoard.pacman.createHearts();
 gameBoard.printBoard();
+
 
 
 document.addEventListener('keydown', function(event) {
     inputDetected(event, gameBoard.pacman);
 });
 
-
-function createHearts(pacmanPlayer)
-{
-    const pacmanLifes = document.querySelector(".pacman-lifes");
-    for(let i =1;i<=pacmanPlayer.lifes;i++)
-    {
-        const heart = document.createElement('img');
-        heart.classList.add("heart");
-        heart.src = './media/img/heart.png';
-        heart.alt = '';
-        pacmanLifes.appendChild(heart);
-    }
-}
 
 function findEnemies() {
     const enemies = [];
