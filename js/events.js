@@ -1,4 +1,4 @@
-import{gameLoopInterval,timerInterval} from './main.js'
+import{gameLoopInterval,timerInterval,totalPoints,totalPowerUps} from './main.js'
 export function nextObjectEvent(pacmanPlayer,num)
 {
     const score = document.querySelector(".pacman-score p:last-child");
@@ -7,6 +7,11 @@ export function nextObjectEvent(pacmanPlayer,num)
             pacmanPlayer.score += 1;
             const scoreText = pacmanPlayer.score + " pt";
             score.innerHTML = `${pacmanPlayer.score} pt`;
+            if(pacmanPlayer.score === totalPoints && pacmanPlayer.powerUpPicked === totalPowerUps)
+            {
+                pacmanPlayer.canMove = false; 
+                gameOver("YOU WIN");
+            }
             break;
         case 6:
             pacmanPlayer.canMove = false; 
@@ -19,37 +24,27 @@ export function nextObjectEvent(pacmanPlayer,num)
 
             if(pacmanPlayer.currentLifes === 0)
             {
-                gameOver();
+                pacmanPlayer.canMove = false; 
+                gameOver("YOU LOSE");
             }
             break;
+        case 3:
+            pacmanPlayer.powerUpPicked += 1;
+            if(pacmanPlayer.score === totalPoints && pacmanPlayer.powerUpPicked === totalPowerUps)
+            {
+                pacmanPlayer.canMove = false; 
+                gameOver("YOU WIN");
+            }
     }
 }
 
 
-function gameOver()
+function gameOver(finishStatus)
 {
-    let mapElement = document.querySelector('.map');
-                let rect = mapElement.getBoundingClientRect();
-
-                let altura = mapElement.offsetHeight;
-                let ancho = mapElement.offsetWidth;
-
-                let gameOverDiv = document.createElement('div');
-                gameOverDiv.style.position = 'fixed';
-                gameOverDiv.style.top = rect.top + 'px';
-                gameOverDiv.style.left = rect.left + 'px';
-                gameOverDiv.style.width = ancho + 'px';
-                gameOverDiv.style.height = altura + 'px';
-                gameOverDiv.style.display = 'flex';
-                gameOverDiv.style.justifyContent = 'center';
-                gameOverDiv.style.alignItems = 'center';
-                gameOverDiv.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
-                gameOverDiv.style.color = 'white';
-                gameOverDiv.style.fontFamily = 'Arial';
-                gameOverDiv.style.fontSize = '2em';
-                gameOverDiv.textContent = "YOU LOSE";
-                document.body.appendChild(gameOverDiv);
-
-                clearInterval(gameLoopInterval);
-                clearInterval(timerInterval);
+    let gameOverScreen = document.getElementById('gameOverScreen');
+    let title = gameOverScreen.querySelector('#gameOverScreen h2');
+    gameOverScreen.style.display ="flex";
+    title.innerHTML = finishStatus;
+    clearInterval(gameLoopInterval);
+    clearInterval(timerInterval);
 }

@@ -10,12 +10,23 @@ let enemies = findEnemies();
 const gameBoard = new Board(all.layout, all.grid,pacmanPlayer);
 gameBoard.pacman.createHearts();
 gameBoard.printBoard();
-
+createFinishScreen();
+let items = countItems();
+let resetBtn = document.querySelector('.js-restart-btn');
 export let gameLoopInterval;
 export let timerInterval;
+export const totalPoints = items[0];
+export const totalPowerUps = items[1];
+
+console.log("Points: " + totalPoints);
+console.log("PowerUps: " + totalPowerUps);
 
 document.addEventListener('keydown', function(event) {
     inputDetected(event, gameBoard.pacman);
+});
+
+resetBtn.addEventListener('click', function(event) {
+    window.location.reload();
 });
 
 
@@ -43,6 +54,38 @@ function gameLoop()
         enemie.moveRandomly();
     });
     gameBoard.printBoard();
+}
+
+function createFinishScreen()
+{
+    let aditionalScreen = document.getElementById('gameOverScreen');
+    let mapElement = document.querySelector('.map');
+
+    let altura = mapElement.offsetHeight;
+    let ancho = mapElement.offsetWidth;
+    aditionalScreen.style.width = ancho + 'px';
+    aditionalScreen.style.height = altura + 'px';
+}
+
+function countItems() {
+    const totalItems = [0,0];
+  
+    for (let i = 0; i < all.layout.length; i++) 
+    {
+      for (let j = 0; j < all.layout[i].length; j++) 
+      {
+        if (all.layout[i][j] === 0) 
+        {
+          totalItems[0]++;
+        } 
+        else if (all.layout[i][j] === 3) 
+        {
+          totalItems[1]++;
+        }
+      }
+    }
+
+    return totalItems;
 }
 
 gameLoopInterval = setInterval(gameLoop,1000);

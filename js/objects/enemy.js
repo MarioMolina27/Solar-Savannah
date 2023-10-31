@@ -6,7 +6,7 @@ export default class Enemy extends Entity {
         super(6);
         this.numEnemy = numEnemy;
         this.originalNumber; 
-        this.aux = 0;
+        this.aux = 4;
     }
 
     moveRandomly() {

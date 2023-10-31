@@ -10,6 +10,7 @@ import Entity from './entity.js';
         this.lifes = 3;
         this.currentLifes= this.lifes;
         this.score = 0;
+        this.powerUpPicked=0;
         this.searchPosition();
         this.powerUpActive = false;
         this.canMove = true;  
@@ -194,7 +195,7 @@ import Entity from './entity.js';
             {
                 const heart = document.createElement('img');
                 heart.classList.add("heart");
-                heart.src = './media/img/heart.png';
+                heart.src = './media/img/life.png';
                 heart.alt = '';
                 pacmanLifes.appendChild(heart);
             }
@@ -202,7 +203,7 @@ import Entity from './entity.js';
             {
                 const heart = document.createElement('img');
                 heart.classList.add("heart");
-                heart.src = './media/img/heartvoid.png';
+                heart.src = './media/img/notlife.png';
                 heart.alt = '';
                 pacmanLifes.appendChild(heart);
             }

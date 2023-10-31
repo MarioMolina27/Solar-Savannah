@@ -110,3 +110,44 @@ p
     background-color: transparent;
     animation: horizontal-shaking 1s infinite;
 }
+
+.screen
+{
+    position: relative;
+}
+
+#gameOverScreen
+{
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index:4;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: #f0f0f0;
+    border-radius: 0 0 15px 15px;
+    display: none;
+}
+
+.buttonGame {
+    font-family: 'DotGothic16';
+	box-shadow: 0px 1px 0px 0px #1c1b18;
+	background:linear-gradient(to bottom, #eae0c2 5%, #ffffff 100%);
+	background-color:#eae0c2;
+	border-radius:11px;
+	cursor:pointer;
+	color:#505739;
+	font-size:14px;
+	font-weight:bold;
+	padding:11px 25px;
+	text-shadow:0px 0px 25px #ffffff;
+}
+.buttonGame:hover {
+	background:linear-gradient(to bottom, #ffffff 5%, #eae0c2 100%);
+	background-color:#ffffff;
+}
+.buttonGame:active {
+	position:relative;
+	top:1px;
+}
