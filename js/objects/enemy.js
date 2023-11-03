@@ -1,12 +1,12 @@
 import Entity from './entity.js';
-import {layout} from '../config.js';
+import * as config from '../config.js';
 
 export default class Enemy extends Entity {
     constructor(numEnemy) {
-        super(6);
+        super(config.enemie);
         this.numEnemy = numEnemy;
         this.originalNumber; 
-        this.aux = 4;
+        this.aux = config.empty;
         this.isAlive = true;
     }
 
@@ -32,21 +32,21 @@ export default class Enemy extends Entity {
         } else if (randomDirection === 'right') {
             newX++;
         }
-        this.originalNumber = layout[newY][newX];
+        this.originalNumber = config.layout[newY][newX];
 
         if (
             newX >= 0 &&
             newY >= 0 &&
-            newY < layout.length &&
-            newX < layout[0].length &&
-            [0, 2, 3, 4].includes(layout[newY][newX]) // Asegúrate de que la nueva posición sea 0, 2, 3 o 4
+            newY < config.layout.length &&
+            newX < config.layout[0].length &&
+            [config.point, config.enemy_lair, config.powerup, config.empty].includes(config.layout[newY][newX]) // Asegúrate de que la nueva posición sea 0, 2, 3 o 4
         ) 
         {
-            layout[this.y][this.x] = this.aux;
+            config.layout[this.y][this.x] = this.aux;
             this.aux = this.originalNumber;
             this.x = newX;
             this.y = newY;
-            layout[this.y][this.x] = this.boardNum;
+            config.layout[this.y][this.x] = this.boardNum;
         }
     }
 }

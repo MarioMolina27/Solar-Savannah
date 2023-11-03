@@ -1,9 +1,11 @@
+import * as config from '../config.js';
+
 export default class Board {
   constructor(layout,containerSelector,pacman,enemies) {
     this.layout = layout;
     this.container = document.querySelector(containerSelector);
     this.pacman = pacman;
-    this.enemies= enemies;
+    this.enemies = enemies;
     this.pacman.board = this;
   }
 
@@ -18,26 +20,26 @@ export default class Board {
         const cellElement = document.createElement("div");
 
         switch (cell) {
-          case 0:
+          case config.point:
             cellElement.classList.add("point");
             break;
-          case 1:
+          case config.wall:
             cellElement.classList.add("wall");
             break;
-          case 2:
+          case config.enemy_lair:
             cellElement.classList.add("enemy-lair");
             break;
-          case 3:
+          case config.powerup:
             cellElement.classList.add("powerup");
             break;
-          case 4:
+          case config.empty:
             cellElement.classList.add("empty");
             break;
-          case 5:
+          case config.pacman:
             cellElement.classList.add("pacman");
             cellElement.id = "pacman";
             break;
-          case 6:
+          case config.enemie:
             cellElement.classList.add("enemy");
             break;
         }

@@ -1,4 +1,8 @@
 import{gameLoopInterval,timerInterval,totalPoints,totalPowerUps} from './main.js'
+import * as config from './config.js'
+
+let timeout;
+
 export function nextObjectEvent(num,board)
 {
     const score = document.querySelector(".pacman-score p:last-child");
@@ -9,6 +13,7 @@ export function nextObjectEvent(num,board)
             score.innerHTML = `${board.pacman.score} pt`;
             if(board.pacman.score === totalPoints && board.pacman.powerUpPicked === totalPowerUps)
             {
+                clearTimeout(timeout);
                 board.pacman.canMove = false; 
                 gameOver("YOU WIN");
             }
@@ -26,6 +31,7 @@ export function nextObjectEvent(num,board)
     
                 if(board.pacman.currentLifes === 0)
                 {
+                    clearTimeout(timeout);
                     board.pacman.canMove = false; 
                     gameOver("YOU LOSE");
                 }
@@ -35,17 +41,33 @@ export function nextObjectEvent(num,board)
             board.pacman.powerUpPicked += 1;
             if(board.pacman.score === totalPoints && board.pacman.powerUpPicked === totalPowerUps)
             {
+                clearTimeout(timeout);
                 board.pacman.canMove = false; 
                 gameOver("YOU WIN");
             }
             else
             {
-                board.pacman.powerUpActive = true;
-                console.log("activado el power up");
-                setTimeout(function () {
-                    board.pacman.powerUpActive = false;
-                    console.log("ya no tienes el powerUp");
-                }, 30000); 
+                if(!board.pacman.powerUpActive)
+                {
+                    board.pacman.powerUpActive = true;
+                    console.log("activado el power up");
+                    document.querySelector('.screen').classList.add('active');
+                    timeout = setTimeout(function () {
+                        board.pacman.powerUpActive = false;
+                        document.querySelector('.screen').classList.remove('active');
+                        console.log("ya no tienes el powerUp");
+                    }, config.powerUpDuration);
+                }
+                else
+                {
+                    clearTimeout(timeout);
+                    console.log("tiempo augmentado");
+                    timeout = setTimeout(function () {
+                        board.pacman.powerUpActive = false;
+                        document.querySelector('.screen').classList.remove('active');
+                        console.log("ya no tienes el powerUp");
+                    }, config.powerUpDuration); 
+                }
             }
     }
 }

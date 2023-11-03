@@ -42,3 +42,7 @@ export let layout = [
   export const powerup = 3;
   export const empty = 4;
   export const pacman = 5;
+  export const enemie = 6;
+
+  export const powerUpDuration = 15000;
+  export const gameLoopDuration = 1000; 

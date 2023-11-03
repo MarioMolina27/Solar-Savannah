@@ -1,13 +1,14 @@
 import {layout} from '../config.js';
 import {nextObjectEvent} from '../events.js';
 import Entity from './entity.js';
+import * as config from '../config.js';
 
  export default class Pacman extends Entity {
     constructor() {
-        super(5);
+        super(config.pacman);
         this.xOriginal = null;
         this.yOriginal = null;
-        this.lifes = 3;
+        this.lifes = 1;
         this.currentLifes= this.lifes;
         this.score = 0;
         this.powerUpPicked=0;
@@ -132,7 +133,7 @@ import Entity from './entity.js';
         if (this.isValidMove(nextX, nextY)) 
         {
             nextObjectEvent(layout[nextY][nextX], this.board);
-            layout[this.y][this.x] = 4;
+            layout[this.y][this.x] = config.empty;
             this.x = nextX;
             this.y = nextY;
             layout[this.y][this.x] = this.boardNum;
@@ -148,12 +149,12 @@ import Entity from './entity.js';
     isValidMove(nextX, nextY) 
     {
         return (
-            nextX >= 0 &&
+            nextX >= config.point &&
             nextX < layout[0].length &&
-            nextY >= 0 &&
+            nextY >= config.point &&
             nextY < layout.length &&
-            layout[nextY][nextX] !== 1 &&
-            layout[nextY][nextX] !== 6
+            layout[nextY][nextX] !== config.wall &&
+            layout[nextY][nextX] !== config.enemie
         );
     }
 
@@ -184,10 +185,10 @@ import Entity from './entity.js';
     }
 
     returnOriginalPosition = () => {
-            layout[this.y][this.x] = 4;
+            layout[this.y][this.x] = config.empty;
             console.log(this.xOriginal + " - " + this.yOriginal);
             this.x = this.xOriginal;
             this.y = this.yOriginal;
-            layout[this.y][this.x] = 5;
+            layout[this.y][this.x] = config.pacman;
         }
 }
