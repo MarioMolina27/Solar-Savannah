@@ -8,7 +8,7 @@ import * as config from '../config.js';
         super(config.pacman);
         this.xOriginal = null;
         this.yOriginal = null;
-        this.lifes = 1;
+        this.lifes = 3;
         this.currentLifes= this.lifes;
         this.score = 0;
         this.powerUpPicked=0;

@@ -5,7 +5,7 @@ body {
     flex-direction: column;
     font-family: 'Pixelify Sans', sans-serif;
     height: 100vh;
-    background-color: #f0f0f0;
+    background-color: #1c1b18;
 	margin: 0px; 
 }
 .map
@@ -69,8 +69,8 @@ p
 }
 
 .point,.wall, .powerup, .empty ,.enemy-lair, #pacman ,.enemy{
-    width: 19px;
-    height: 19px;
+    width: 16px;
+    height: 16px;
     border-radius: 3px;
 }
 
@@ -88,7 +88,7 @@ p
 
 .point {
     content: url("../media/img/point.png");
-    padding: 7px;
+    padding: 6px;
     border-radius: 50%;
     box-sizing: border-box;
 }
@@ -176,3 +176,111 @@ p
 	position:relative;
 	top:1px;
 }
+
+.outer {
+    position: relative;
+    max-width: 600px;
+  }
+
+div.game-container {
+    position: relative;
+    filter: url(#chromatic-filter);
+}
+
+
+/* CRT EFFECTS */
+
+.crt::before {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(rgba(78, 75, 75, 0) 50%, rgba(49, 48, 48, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    z-index: 2;
+    background-size: 100% 2px, 3px 100%;
+    pointer-events: none;
+  }
+
+  .crt::after {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(18, 16, 16, 0.1);
+    opacity: 0;
+    z-index: 2;
+    pointer-events: none;
+    animation: flicker 0.15s infinite;
+  }
+
+  @keyframes flicker {
+    0% {
+    opacity: 0.27861;
+    }
+    5% {
+    opacity: 0.34769;
+    }
+    10% {
+    opacity: 0.23604;
+    }
+    15% {
+    opacity: 0.90626;
+    }
+    20% {
+    opacity: 0.18128;
+    }
+    25% {
+    opacity: 0.83891;
+    }
+    30% {
+    opacity: 0.65583;
+    }
+    35% {
+    opacity: 0.67807;
+    }
+    40% {
+    opacity: 0.26559;
+    }
+    45% {
+    opacity: 0.84693;
+    }
+    50% {
+    opacity: 0.96019;
+    }
+    55% {
+    opacity: 0.08594;
+    }
+    60% {
+    opacity: 0.20313;
+    }
+    65% {
+    opacity: 0.71988;
+    }
+    70% {
+    opacity: 0.53455;
+    }
+    75% {
+    opacity: 0.37288;
+    }
+    80% {
+    opacity: 0.71428;
+    }
+    85% {
+    opacity: 0.70419;
+    }
+    90% {
+    opacity: 0.7003;
+    }
+    95% {
+    opacity: 0.36108;
+    }
+    100% {
+    opacity: 0.24387;
+    }
+  }
