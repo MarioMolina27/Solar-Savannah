@@ -291,4 +291,9 @@ div.game-container {
         height: 19px;
         border-radius: 3px;
     }
+
+    .point {
+        padding: 7px;
+        border-radius: 50%;
+    }
 }
