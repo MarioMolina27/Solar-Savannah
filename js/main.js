@@ -10,9 +10,9 @@ let enemies = findEnemies();
 const gameBoard = new Board(all.layout, all.grid,pacmanPlayer);
 gameBoard.pacman.createHearts();
 gameBoard.printBoard();
-createFinishScreen();
+
 let items = countItems();
-let resetBtn = document.querySelector('.js-restart-btn');
+
 export let gameLoopInterval;
 export let timerInterval;
 export const totalPoints = items[0];
@@ -23,10 +23,6 @@ console.log("PowerUps: " + totalPowerUps);
 
 document.addEventListener('keydown', function(event) {
     inputDetected(event, gameBoard.pacman);
-});
-
-resetBtn.addEventListener('click', function(event) {
-    window.location.reload();
 });
 
 
@@ -51,21 +47,14 @@ function findEnemies() {
 function gameLoop()
 {
     enemies.forEach(enemie => {
-        enemie.moveRandomly();
+        if(enemie.isAlive)
+        {
+            enemie.moveRandomly();
+        }
     });
     gameBoard.printBoard();
 }
 
-function createFinishScreen()
-{
-    let aditionalScreen = document.getElementById('gameOverScreen');
-    let mapElement = document.querySelector('.map');
-
-    let altura = mapElement.offsetHeight;
-    let ancho = mapElement.offsetWidth;
-    aditionalScreen.style.width = ancho + 'px';
-    aditionalScreen.style.height = altura + 'px';
-}
 
 function countItems() {
     const totalItems = [0,0];
@@ -84,7 +73,6 @@ function countItems() {
         }
       }
     }
-
     return totalItems;
 }
 

@@ -81,8 +81,6 @@ import Entity from './entity.js';
         }
     }
 
-    
-
     searchPosition =() =>
     {
         let i = 0;
@@ -106,83 +104,57 @@ import Entity from './entity.js';
         } while (i < layout.length&& !found);
     }
 
-    moveLeft = () => {
-       
-        const nextX = this.x - 1;
-        
-        if (nextX >= 0 && layout[this.y][nextX] !== 1 && layout[this.y][nextX] !==6) {  
-            nextObjectEvent(this,layout[this.y][nextX]); 
+    moveLeft = () => 
+    {
+        this.move(-1, 0);
+    }
+    
+    moveUp = () => 
+    {
+        this.move(0, -1);
+    }
+    
+    moveDown = () => 
+    {
+        this.move(0, 1);
+    }
+    
+    moveRight = () => 
+    {
+        this.move(1, 0);
+    }
+    
+    move(dx, dy) 
+    {
+        const nextX = this.x + dx;
+        const nextY = this.y + dy;
+    
+        if (this.isValidMove(nextX, nextY)) 
+        {
+            nextObjectEvent(layout[nextY][nextX], this.board);
             layout[this.y][this.x] = 4;
             this.x = nextX;
+            this.y = nextY;
             layout[this.y][this.x] = this.boardNum;
             this.board.printBoard();
-        } 
+        }
         else 
         {
             console.log("Colisión");
         }
-        nextObjectEvent(this,layout[this.y][nextX]); 
-    }
-
-    moveUp = () => {
-        
-        const nextY = this.y - 1;
-    
-        
-        if (nextY >= 0 && layout[nextY][this.x] !== 1 && layout[nextY][this.x] !== 6) 
-        {
-            nextObjectEvent(this,layout[nextY][this.x]);
-            layout[this.y][this.x] = 4;
-            this.y = nextY;
-            layout[this.y][this.x] = this.boardNum;
-        } 
-        else 
-        {
-            console.log("Colisión");
-        }
-        nextObjectEvent(this,layout[nextY][this.x]); 
-        this.board.printBoard();
+        nextObjectEvent(layout[nextY][nextX], this.board);
     }
     
-    moveDown = () => {
-        const nextY = this.y + 1;
-    
-        if (nextY < layout.length && layout[nextY][this.x] !== 1 && layout[nextY][this.x] !== 6) {
-            nextObjectEvent(this,layout[nextY][this.x]); 
-            layout[this.y][this.x] = 4;
-    
-            this.y = nextY;
-
-            layout[this.y][this.x] = this.boardNum;
-        } 
-        else 
-        {
-            console.log("Colisión");
-        }
-        nextObjectEvent(this,layout[nextY][this.x]); 
-        this.board.printBoard();
-    }
-    
-    moveRight = () => {
-        
-        const nextX = this.x + 1;
-    
-       
-        if (nextX < layout[0].length && layout[this.y][nextX] !== 1 && layout[this.y][nextX] !== 6) {
-             
-            nextObjectEvent(this,layout[this.y][nextX]); 
-            layout[this.y][this.x] = 4;
-    
-            this.x = nextX;
-    
-            layout[this.y][this.x] = this.boardNum;
-        } 
-        else 
-        {
-            console.log("Colisión");
-        }
-        nextObjectEvent(this,layout[this.y][nextX]); 
-        this.board.printBoard();
+    isValidMove(nextX, nextY) 
+    {
+        return (
+            nextX >= 0 &&
+            nextX < layout[0].length &&
+            nextY >= 0 &&
+            nextY < layout.length &&
+            layout[nextY][nextX] !== 1 &&
+            layout[nextY][nextX] !== 6
+        );
     }
 
     createHearts = () => 
