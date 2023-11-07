@@ -153,7 +153,7 @@ import * as utilities from '../utilities.js'
         const nextCell = layout[nextY][nextX];
         let moveValid = false;
 
-        if (nextX >= config.point && nextX < layout[0].length && nextY >= config.point && nextY < layout.length && nextCell !== config.wall) 
+        if (nextX >= config.point && nextX < layout[0].length && nextY >= config.point && nextY < layout.length && nextCell !== config.wall  && nextCell !== config.enemy_lair) 
         {
             if (this.powerUpActive && nextCell === config.enemie) 
             {

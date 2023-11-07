@@ -1,5 +1,6 @@
 import * as config from "./config.js";
 import Enemy from './objects/enemy.js';
+import { gameBoard } from './main.js';
 
 export function countItems() {
     const totalItems = [0,0];
@@ -21,12 +22,16 @@ export function countItems() {
     return totalItems;
 }
 
-export function findEnemies() {
+export function findEnemies() 
+{
     const enemies = [];
     let num = 1;
-    for (let y = 0; y < config.layout.length; y++) {
-        for (let x = 0; x < config.layout[y].length; x++) {
-            if (config.layout[y][x] === config.enemie) {
+    for (let y = 0; y < config.layout.length; y++) 
+    {
+        for (let x = 0; x < config.layout[y].length; x++) 
+        {
+            if (config.layout[y][x] === config.enemie) 
+            {
                 const enemy = new Enemy(num);
                 enemy.x = x;
                 enemy.y = y;
@@ -44,8 +49,35 @@ export function killEnemie(x,y,gameBoard)
     gameBoard.enemies.forEach(enemie => {
         if(enemie.x===x && enemie.y===y)
         { 
-            console.log(enemie);
-            enemie.isAlive=false;
+            if(enemie.aux === config.point)
+            {
+                console.log("punto de enemigo conseguido");
+                gameBoard.pacman.score++;
+            }
+            enemie.reestartNewPosition();
         }
     });
+}
+
+export function posibleRestartsEnemy()
+{
+    let positions = [];
+
+    for (let row = 0; row < config.layout.length; row++) 
+    {
+        for (let col = 0; col < config.layout[row].length; col++) 
+        {
+            if (config.layout[row][col] === 2 && !gameBoard.enemies.some(enemy => enemy.x === col && enemy.y === row)) 
+            {
+                positions.push([row, col]);
+            }
+        }
+    }
+    return positions;
+}
+
+export function getRandomPositionFromArray(array) 
+{
+    const randomIndex = Math.floor(Math.random() * array.length);
+    return array[randomIndex];
 }

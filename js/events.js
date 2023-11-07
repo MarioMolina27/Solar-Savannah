@@ -7,7 +7,7 @@ export function nextObjectEvent(num,board)
 {
     const score = document.querySelector(".pacman-score p:last-child");
     switch (num) {
-        case 0:
+        case config.point:
             board.pacman.score += 1;
             const scoreText = board.pacman.score + " pt";
             score.innerHTML = `${board.pacman.score} pt`;
@@ -18,7 +18,7 @@ export function nextObjectEvent(num,board)
                 gameOver("YOU WIN");
             }
             break;
-        case 6:
+        case config.enemie:
             if(!board.pacman.powerUpActive)
             {
                 board.pacman.canMove = false; 
@@ -37,7 +37,7 @@ export function nextObjectEvent(num,board)
                 }
             }
             break;
-        case 3:
+        case config.powerup:
             board.pacman.powerUpPicked += 1;
             if(board.pacman.score === totalPoints && board.pacman.powerUpPicked === totalPowerUps)
             {

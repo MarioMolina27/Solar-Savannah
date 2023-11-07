@@ -8,10 +8,7 @@ import * as utilities from './utilities.js'
 
 export let gameLoopInterval;
 export let timerInterval;
-
-const pacmanPlayer = new Pacman();
-let enemies = utilities.findEnemies();
-export const gameBoard = new Board(config.layout, config.grid ,pacmanPlayer,enemies);
+export const gameBoard = new Board(config.layout, config.grid, new Pacman(), utilities.findEnemies());
 
 gameBoard.pacman.createHearts();
 gameBoard.printBoard();
@@ -21,6 +18,9 @@ let items = utilities.countItems();
 export const totalPoints = items[0];
 export const totalPowerUps = items[1];
 
+
+console.log("puntos necesarios: "+items[0]);
+console.log("power necesarios: "+items[1]);
 
 document.addEventListener('keydown', function(event) {
     inputDetected(event, gameBoard.pacman);

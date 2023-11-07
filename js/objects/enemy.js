@@ -1,5 +1,6 @@
 import Entity from './entity.js';
 import * as config from '../config.js';
+import * as utilities from '../utilities.js'
 
 export default class Enemy extends Entity {
     constructor(numEnemy) {
@@ -48,5 +49,16 @@ export default class Enemy extends Entity {
             this.y = newY;
             config.layout[this.y][this.x] = this.boardNum;
         }
+    }
+    reestartNewPosition()
+    {
+        this.isAlive=false;
+        let newPosition = utilities.getRandomPositionFromArray(utilities.posibleRestartsEnemy());
+        this.x = newPosition[1];
+        this.y = newPosition[0];
+        this.aux = config.enemy_lair;
+        setTimeout(() => {
+            this.isAlive = true; 
+        }, config.reapearEnemyDuration);
     }
 }
