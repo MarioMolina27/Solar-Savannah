@@ -1,6 +1,7 @@
 import * as config from "./config.js";
 import Enemy from './objects/enemy.js';
 import { gameBoard } from './main.js';
+import {pickPowerup} from './events.js'
 
 export function countItems() {
     const totalItems = [0,0];
@@ -53,6 +54,11 @@ export function killEnemie(x,y,gameBoard)
             {
                 console.log("punto de enemigo conseguido");
                 gameBoard.pacman.score++;
+            }
+            else if(enemie.aux === config.powerup)
+            {
+                gameBoard.powerUpPicked++;
+                pickPowerup(gameBoard);
             }
             enemie.reestartNewPosition();
         }
