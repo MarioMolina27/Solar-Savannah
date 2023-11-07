@@ -75,6 +75,7 @@ export function nextObjectEvent(num,board)
 
 function gameOver(finishStatus)
 {
+    document.querySelector('.screen').classList.remove('active');
     let gameOverScreen = document.getElementById('gameOverScreen');
     let mapElement = document.querySelector('.map');
     let altura = mapElement.offsetHeight;

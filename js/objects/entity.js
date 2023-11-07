@@ -5,6 +5,5 @@ export default class Entity {
         this.direction = "left";
         this.boardNum = boardNum;
         this.divElement = null;
-        this.board = null;
     }
 }

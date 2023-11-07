@@ -2,6 +2,8 @@ import {layout} from '../config.js';
 import {nextObjectEvent} from '../events.js';
 import Entity from './entity.js';
 import * as config from '../config.js';
+import { gameBoard } from '../main.js';
+import * as utilities from '../utilities.js'
 
  export default class Pacman extends Entity {
     constructor() {
@@ -137,7 +139,7 @@ import * as config from '../config.js';
             this.x = nextX;
             this.y = nextY;
             layout[this.y][this.x] = this.boardNum;
-            this.board.printBoard();
+            gameBoard.printBoard();
         }
         else 
         {
@@ -148,14 +150,24 @@ import * as config from '../config.js';
     
     isValidMove(nextX, nextY) 
     {
-        return (
-            nextX >= config.point &&
-            nextX < layout[0].length &&
-            nextY >= config.point &&
-            nextY < layout.length &&
-            layout[nextY][nextX] !== config.wall &&
-            layout[nextY][nextX] !== config.enemie
-        );
+        const nextCell = layout[nextY][nextX];
+        let moveValid = false;
+
+        if (nextX >= config.point && nextX < layout[0].length && nextY >= config.point && nextY < layout.length && nextCell !== config.wall) 
+        {
+            if (this.powerUpActive && nextCell === config.enemie) 
+            {
+                moveValid = true;
+                console.log("enemie encontrado con power up");
+                utilities.killEnemie(nextX,nextY,gameBoard)
+            } 
+            else if (nextCell !== config.enemie) 
+            {
+                moveValid = true;
+            }
+        }
+    
+        return moveValid;
     }
 
     createHearts = () => 

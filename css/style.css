@@ -12,7 +12,7 @@ body {
 {
 	display: flex;
 	flex-direction: column;
-	background-image: url(../media/img/dry_background.jpg);
+	background-image: url(../media/img/background.jpg);
     background-repeat: repeat;
 	padding: 20px;
     position: relative;
@@ -87,7 +87,7 @@ p
 
 
 .point {
-    content: url("../media/img/point.png");
+    content: url("../media/img/point.jpg");
     padding: 6px;
     border-radius: 50%;
     box-sizing: border-box;
@@ -137,6 +137,7 @@ p
         border-color: rgb(255, 0, 0); 
     }
 }
+
 .active {
     animation: colorTransition 2s infinite alternate;
 }
@@ -285,7 +286,7 @@ div.game-container {
     }
   }
 
-  @media (min-width: 13.01in) {
+  @media (min-width: 16.01in) {
     .point,.wall, .powerup, .empty ,.enemy-lair, #pacman ,.enemy{
         width: 19px;
         height: 19px;
