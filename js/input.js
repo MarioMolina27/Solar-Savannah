@@ -5,24 +5,34 @@ const teclasFlecha = {
     DOWN: 'ArrowDown'
 };
 
+let interval;
+let time = 160;
+
 
 export function inputDetected(event,pacman) {
+    if (interval) {
+        clearInterval(interval); 
+    }
     switch (event.key) {
         case teclasFlecha.LEFT:
-            //console.log('Tecla Izquierda presionada');
-            pacman.directionChange('left',false);
+            interval = setInterval(function () {
+                pacman.directionChange('left', false);
+            }, time); // El valor 300 representa 0.3 segundos en milisegundos
             break;
         case teclasFlecha.RIGHT:
-            //console.log('Tecla Derecha presionada');
-            pacman.directionChange('right',false);
+            interval = setInterval(function () {
+                pacman.directionChange('right', false);
+            }, time);
             break;
         case teclasFlecha.UP:
-            //console.log('Tecla Arriba presionada');
-            pacman.directionChange('up',false);
+            interval = setInterval(function () {
+                pacman.directionChange('up', false);
+            }, time);
             break;
         case teclasFlecha.DOWN:
-            //console.log('Tecla Abajo presionada');
-            pacman.directionChange('down',false);
+            interval = setInterval(function () {
+                pacman.directionChange('down', false);
+            }, time);
             break;
     }
 }
