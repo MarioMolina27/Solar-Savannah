@@ -5,7 +5,7 @@ const teclasFlecha = {
     DOWN: 'ArrowDown'
 };
 
-let interval;
+export let interval;
 let time = 160;
 
 

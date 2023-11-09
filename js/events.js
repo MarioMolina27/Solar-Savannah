@@ -1,5 +1,6 @@
 import { gameLoopInterval, timerInterval, totalPoints, totalPowerUps } from './main.js'
 import * as config from './config.js'
+import {interval} from './input.js'
 
 let timeout;
 let powerupSound = new Audio('../media/aud/poweup.mp3');
@@ -25,6 +26,7 @@ export function nextObjectEvent(num, board) {
         case config.enemie:
             if (!board.pacman.powerUpActive) 
             {
+                clearInterval(interval);
                 gameOverSound.play();
                 board.pacman.canMove = false;
                 setTimeout(() => {
