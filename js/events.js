@@ -3,6 +3,8 @@ import * as config from './config.js'
 
 let timeout;
 let powerupSound = new Audio('../media/aud/poweup.mp3');
+let pointSound = new Audio('../media/aud/point.wav');
+let gameOverSound = new Audio('../media/aud/gameOver.mp3');
 
 export function nextObjectEvent(num, board) {
     const score = document.querySelector(".pacman-score p:last-child");
@@ -10,6 +12,7 @@ export function nextObjectEvent(num, board) {
     {
         case config.point:
             board.pacman.score += 1;
+            pointSound.play();
             const scoreText = board.pacman.score + " pt";
             score.innerHTML = `${board.pacman.score} pt`;
             if (board.pacman.score === totalPoints && board.pacman.powerUpPicked === totalPowerUps) 
@@ -22,8 +25,7 @@ export function nextObjectEvent(num, board) {
         case config.enemie:
             if (!board.pacman.powerUpActive) 
             {
-                let gameOver = new Audio('../media/aud/gameOver.mp3');
-                gameOver.play();
+                gameOverSound.play();
                 board.pacman.canMove = false;
                 setTimeout(() => {
                     board.pacman.canMove = true;

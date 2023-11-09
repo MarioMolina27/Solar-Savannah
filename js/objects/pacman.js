@@ -163,10 +163,6 @@ import * as utilities from '../utilities.js'
                     moveValid = true;
                     utilities.killEnemy(gameBoard,index);
                 }
-                else
-                {
-                    console.log("enemigo sigue en guarida");
-                }
             } 
             else if (nextCell !== config.enemie) 
             {
