@@ -1,4 +1,4 @@
-import { gameLoopInterval, timerInterval, totalPoints, totalPowerUps } from './main.js'
+import { gameBoard, gameLoopInterval, timerInterval, totalPoints, totalPowerUps } from './main.js'
 import * as config from './config.js'
 import {interval} from './input.js'
 
@@ -42,6 +42,10 @@ export function nextObjectEvent(num, board) {
                     board.pacman.canMove = false;
                     gameOver("YOU LOSE");
                 }
+            }
+            else
+            {
+                board.pacman.score += 20;
             }
             break;
         case config.powerup:
