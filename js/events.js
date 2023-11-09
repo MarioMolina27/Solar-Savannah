@@ -2,6 +2,7 @@ import { gameLoopInterval, timerInterval, totalPoints, totalPowerUps } from './m
 import * as config from './config.js'
 
 let timeout;
+let powerupSound = new Audio('../media/aud/poweup.mp3');
 
 export function nextObjectEvent(num, board) {
     const score = document.querySelector(".pacman-score p:last-child");
@@ -21,6 +22,8 @@ export function nextObjectEvent(num, board) {
         case config.enemie:
             if (!board.pacman.powerUpActive) 
             {
+                let gameOver = new Audio('../media/aud/gameOver.mp3');
+                gameOver.play();
                 board.pacman.canMove = false;
                 setTimeout(() => {
                     board.pacman.canMove = true;
@@ -38,6 +41,7 @@ export function nextObjectEvent(num, board) {
             }
             break;
         case config.powerup:
+            powerupSound.play();
             board.pacman.powerUpPicked += 1;
             if (board.pacman.score === totalPoints && board.pacman.powerUpPicked === totalPowerUps) 
             {

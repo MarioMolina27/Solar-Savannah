@@ -47,6 +47,8 @@ export function findEnemies()
 
 export function killEnemie(x,y,gameBoard)
 {
+    let killenemy = new Audio('../media/aud/enemy-eat.mp3');
+    killenemy.play();
     gameBoard.enemies.forEach(enemie => {
         if(enemie.x===x && enemie.y===y)
         { 
