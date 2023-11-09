@@ -45,26 +45,42 @@ export function findEnemies()
     return enemies;
 }
 
-export function killEnemie(x,y,gameBoard)
-{
-    let killenemy = new Audio('../media/aud/enemy-eat.mp3');
-    killenemy.play();
-    gameBoard.enemies.forEach(enemie => {
-        if(enemie.x===x && enemie.y===y)
-        { 
-            if(enemie.aux === config.point)
-            {
-                console.log("punto de enemigo conseguido");
-                gameBoard.pacman.score++;
-            }
-            else if(enemie.aux === config.powerup)
-            {
-                gameBoard.powerUpPicked++;
-                pickPowerup(gameBoard);
-            }
-            enemie.reestartNewPosition();
+ export function findEnemyIndex(x, y, gameBoard) 
+ {
+    let index = -1;
+    for (let i = 0; i < gameBoard.enemies.length; i++) 
+    {
+        const enemy = gameBoard.enemies[i];
+        if (enemy.x === x && enemy.y === y) 
+        {
+            index = i; 
+            
         }
-    });
+    }
+    return index; 
+}
+
+export function killEnemy(gameBoard,enemyIndex) 
+{
+    let killEnemySound = new Audio('../media/aud/enemy-eat.mp3');
+    killEnemySound.play();
+
+    if (enemyIndex !== -1) 
+    {
+        const enemy = gameBoard.enemies[enemyIndex];
+
+        if (enemy.aux === config.point) 
+        {
+            console.log("Punto de enemigo conseguido");
+            gameBoard.pacman.score++;
+        } 
+        else if (enemy.aux === config.powerup) 
+        {
+            gameBoard.powerUpPicked++;
+            pickPowerup(gameBoard);
+        }
+        enemy.reestartNewPosition();
+    }
 }
 
 export function posibleRestartsEnemy()

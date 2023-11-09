@@ -157,9 +157,16 @@ import * as utilities from '../utilities.js'
         {
             if (this.powerUpActive && nextCell === config.enemie) 
             {
-                moveValid = true;
-                console.log("enemie encontrado con power up");
-                utilities.killEnemie(nextX,nextY,gameBoard)
+                let index = utilities.findEnemyIndex(nextX,nextY,gameBoard);
+                if(gameBoard.enemies[index].aux !== config.enemy_lair)
+                {
+                    moveValid = true;
+                    utilities.killEnemy(gameBoard,index);
+                }
+                else
+                {
+                    console.log("enemigo sigue en guarida");
+                }
             } 
             else if (nextCell !== config.enemie) 
             {
