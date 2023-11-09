@@ -8,14 +8,12 @@ let pointSound = new Audio('../media/aud/point.wav');
 let gameOverSound = new Audio('../media/aud/gameOver.mp3');
 
 export function nextObjectEvent(num, board) {
-    const score = document.querySelector(".pacman-score p:last-child");
     switch (num) 
     {
         case config.point:
             board.pacman.score += 1;
             pointSound.play();
-            const scoreText = board.pacman.score + " pt";
-            score.innerHTML = `${board.pacman.score} pt`;
+            refreshScoreScreen(board);
             if (board.pacman.score === totalPoints && board.pacman.powerUpPicked === totalPowerUps) 
             {
                 clearTimeout(timeout);
@@ -46,6 +44,7 @@ export function nextObjectEvent(num, board) {
             else
             {
                 board.pacman.score += 20;
+                refreshScoreScreen(board);
             }
             break;
         case config.powerup:
@@ -89,7 +88,6 @@ export function pickPowerup(board)
     }
 }
 
-
 function gameOver(finishStatus) 
 {
     document.querySelector('.screen').classList.remove('active');
@@ -111,4 +109,10 @@ function gameOver(finishStatus)
     resetBtn.addEventListener('click', function (event) {
         window.location.reload();
     });
+}
+
+function refreshScoreScreen(board)
+{
+    const score = document.querySelector(".pacman-score p:last-child");
+    score.innerHTML = `${board.pacman.score} pt`;
 }
