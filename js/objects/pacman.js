@@ -13,6 +13,7 @@ import * as utilities from '../utilities.js'
         this.lifes = 3;
         this.currentLifes= this.lifes;
         this.score = 0;
+        this.pointsPicked=0;
         this.powerUpPicked=0;
         this.searchPosition();
         this.powerUpActive = false;

@@ -12,9 +12,10 @@ export function nextObjectEvent(num, board) {
     {
         case config.point:
             board.pacman.score += 1;
+            board.pacman.pointsPicked += 1;
             pointSound.play();
             refreshScoreScreen(board);
-            if (board.pacman.score === totalPoints && board.pacman.powerUpPicked === totalPowerUps) 
+            if (board.pacman.pointsPicked === totalPoints && board.pacman.powerUpPicked === totalPowerUps) 
             {
                 clearTimeout(timeout);
                 board.pacman.canMove = false;
@@ -50,7 +51,7 @@ export function nextObjectEvent(num, board) {
         case config.powerup:
             powerupSound.play();
             board.pacman.powerUpPicked += 1;
-            if (board.pacman.score === totalPoints && board.pacman.powerUpPicked === totalPowerUps) 
+            if (board.pacman.pointsPicked === totalPoints && board.pacman.powerUpPicked === totalPowerUps) 
             {
                 clearTimeout(timeout);
                 board.pacman.canMove = false;
