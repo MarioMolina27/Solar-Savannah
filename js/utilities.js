@@ -73,6 +73,7 @@ export function killEnemy(gameBoard,enemyIndex)
         {
             console.log("Punto de enemigo conseguido");
             gameBoard.pacman.score++;
+            gameBoard.pacman.pointsPicked++;
         } 
         else if (enemy.aux === config.powerup) 
         {
