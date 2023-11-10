@@ -62,9 +62,6 @@ export function findEnemies()
 
 export function killEnemy(gameBoard,enemyIndex) 
 {
-    let killEnemySound = new Audio('../media/aud/enemy-eat.mp3');
-    killEnemySound.play();
-
     if (enemyIndex !== -1) 
     {
         const enemy = gameBoard.enemies[enemyIndex];

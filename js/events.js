@@ -6,6 +6,7 @@ let timeout;
 let powerupSound = new Audio('../media/aud/poweup.mp3');
 let pointSound = new Audio('../media/aud/point.wav');
 let gameOverSound = new Audio('../media/aud/gameOver.mp3');
+let killEnemySound = new Audio('../media/aud/enemy-eat.mp3');
 
 export function nextObjectEvent(num, board) {
     switch (num) 
@@ -44,6 +45,7 @@ export function nextObjectEvent(num, board) {
             }
             else
             {
+                killEnemySound.play();
                 board.pacman.score += 20;
                 refreshScoreScreen(board);
             }
