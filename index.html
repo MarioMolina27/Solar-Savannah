@@ -37,31 +37,52 @@
           </filter>
       </svg>
 
-   <div class="game-container crt">
-        <div class="gameStadistics">
-            <div class="pacman-lifes"></div>
-            <div class="pacman-time">
-                <p id="timerHours">00:</p>
-                <p id="timerMinutes">00:</p>
-                <p id="timerSeconds">00</p>
-            </div>
-            <div class="pacman-score">
-                <p>SCORE: </p>
-                <p>0 pt</p>
-            </div>
+      <div class="game">
+        <div class="character-speach">
+            <img src="./media/img/malik.png" alt="malik">
+            <div id="speech-bubble">
+                <div id="bub-part-a"></div>
+                <div id="bub-part-b"></div>
+                <div id="bub-part-c"></div>
+                <div id="speech-txt">Hello!</div>
+                <div id="bub-part-c"></div>
+                <div id="bub-part-b"></div>
+                <div id="bub-part-a"></div>
+        
+                <div id="speech-arrow">
+                    <div id="arrow-w"></div>
+                    <div id="arrow-x"></div>
+                    <div id="arrow-y"></div>
+                    <div id="arrow-z"></div>
+                </div><!--end arrow-->
+        </div><!--end speech bubble-->
         </div>
-        <div class="screen">
-            <div id="gameOverScreen">
-                <h2>WAITING FOR COMPLETION</h2>
-                <div class="buttonsEndGame">
-                    <button class="buttonGame">Back to Landing</button>
-                    <button class="buttonGame js-restart-btn"><i class="fa-solid fa-rotate-right"></i>  Restart</button>
+       <div class="game-container crt">
+            <div class="gameStadistics">
+                <div class="pacman-lifes"></div>
+                <div class="pacman-time">
+                    <p id="timerHours">00:</p>
+                    <p id="timerMinutes">00:</p>
+                    <p id="timerSeconds">00</p>
+                </div>
+                <div class="pacman-score">
+                    <p>SCORE: </p>
+                    <p>0 pt</p>
                 </div>
             </div>
-            <div class="map"></div>
-        </div>
-        
-   </div>
+            <div class="screen">
+                <div id="gameOverScreen">
+                    <h2>WAITING FOR COMPLETION</h2>
+                    <div class="buttonsEndGame">
+                        <button class="buttonGame">Back to Landing</button>
+                        <button class="buttonGame js-restart-btn"><i class="fa-solid fa-rotate-right"></i>  Restart</button>
+                    </div>
+                </div>
+                <div class="map"></div>
+            </div>
+            
+       </div>
+      </div>
     <script type="module" src="js/main.js"></script>
 </body>
 </html>

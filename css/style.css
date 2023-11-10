@@ -1,3 +1,11 @@
+/* colors */
+:root {
+	--Speech-Bubble-Border:#7663CB;
+	--Speech-Bubble-Background:#fcfcfc;
+	--Speech-Bubble-Text:#000;
+    --Background-Color: #1c1b18;
+}
+
 body {
     display: flex;
     justify-content: center;
@@ -5,9 +13,19 @@ body {
     flex-direction: column;
     font-family: 'VT323', monospace;
     height: 100vh;
-    background-color: #1c1b18;
+    background-color:var(--Background-Color);  
 	margin: 0px; 
 }
+
+.game
+{
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
 .map
 {
 	display: flex;
@@ -23,6 +41,7 @@ body {
 {
     display: flex;
     flex-direction: column;
+    margin-left: 80px;
 }
 
 .pacman-lifes, .gameStadistics,.pacman-time
@@ -286,6 +305,90 @@ div.game-container {
     }
   }
 
+#speech-bubble {
+	width:150px;
+}
+
+#bub-part-a {
+	margin-left:6px;
+	width:calc(100% - 12px);
+	height:2px;
+	background:var(--Speech-Bubble-Border);
+}
+
+#bub-part-b {
+	margin-left:4px;
+	width:calc(100% - 12px);
+	height:2px;
+	background:var(--Speech-Bubble-Background);
+	border-left:2px solid var(--Speech-Bubble-Border);
+	border-right:2px solid var(--Speech-Bubble-Border);
+}
+
+#bub-part-c {
+	margin-left:2px;
+	width:calc(100% - 8px);
+	height:2px;
+	background:var(--Speech-Bubble-Background);
+	border-left:2px solid var(--Speech-Bubble-Border);
+	border-right:2px solid var(--Speech-Bubble-Border);
+}
+
+#speech-txt {
+	/*width:calc(100% - 24px);*/
+	padding:10px;
+	font-size:25px;
+	color:var(--Speech-Bubble-Text);
+	text-align:center;
+	background:var(--Speech-Bubble-Background);
+	border-left:2px solid var(--Speech-Bubble-Border);
+	border-right:2px solid var(--Speech-Bubble-Border);
+}
+
+#speech-arrow {
+	margin-top:-2px;
+	margin-left:20px;
+}
+
+#arrow-w {
+	width:8px;
+	height:8px;
+	background:var(--Speech-Bubble-Background);
+	border-left:2px solid var(--Speech-Bubble-Border);
+	border-right:2px solid var(--Speech-Bubble-Border);
+}
+
+#arrow-x {
+	width:6px;
+	height:2px;
+	background:var(--Speech-Bubble-Background);
+	border-left:2px solid var(--Speech-Bubble-Border);
+	border-right:2px solid var(--Speech-Bubble-Border);
+}
+
+#arrow-y {
+	margin-left:-2px;
+	width:6px;
+	height:2px;
+	background:var(--Speech-Bubble-Background);
+	border-left:2px solid var(--Speech-Bubble-Border);
+	border-right:2px solid var(--Speech-Bubble-Border);
+}
+
+#arrow-z {
+	margin-left:-2px;
+	width:8px;
+	height:2px;
+	background:var(--Speech-Bubble-Border);
+}
+  .character-speach
+  {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    z-index: 3; 
+  }
+
   @media (min-width: 16.01in) {
     .point,.wall, .powerup, .empty ,.enemy-lair, #pacman ,.enemy{
         width: 19px;
@@ -298,3 +401,4 @@ div.game-container {
         border-radius: 50%;
     }
 }
+
