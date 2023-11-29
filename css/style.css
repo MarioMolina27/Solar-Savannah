@@ -1,9 +1,9 @@
 /* colors */
 :root {
-	--Speech-Bubble-Border:#7663CB;
+	--Main-Color:#7663CB;
 	--Speech-Bubble-Background:#fcfcfc;
 	--Speech-Bubble-Text:#000;
-    --Background-Color: #1c1b18;
+    --Body-Color: #1c1b18;
 }
 
 body {
@@ -13,7 +13,7 @@ body {
     flex-direction: column;
     font-family: 'VT323', monospace;
     height: 100vh;
-    background-color:var(--Background-Color);  
+    background-color:var(--Body-Color);  
 	margin: 0px; 
 }
 
@@ -39,7 +39,7 @@ body {
 
 .game-container
 {
-    display: flex;
+    display: none;
     flex-direction: column;
     margin-left: 80px;
 }
@@ -305,15 +305,12 @@ div.game-container {
     }
   }
 
-#speech-bubble {
-	width:150px;
-}
 
 #bub-part-a {
 	margin-left:6px;
 	width:calc(100% - 12px);
 	height:2px;
-	background:var(--Speech-Bubble-Border);
+	background:var(--Main-Color);
 }
 
 #bub-part-b {
@@ -321,8 +318,8 @@ div.game-container {
 	width:calc(100% - 12px);
 	height:2px;
 	background:var(--Speech-Bubble-Background);
-	border-left:2px solid var(--Speech-Bubble-Border);
-	border-right:2px solid var(--Speech-Bubble-Border);
+	border-left:2px solid var(--Main-Color);
+	border-right:2px solid var(--Main-Color);
 }
 
 #bub-part-c {
@@ -330,19 +327,19 @@ div.game-container {
 	width:calc(100% - 8px);
 	height:2px;
 	background:var(--Speech-Bubble-Background);
-	border-left:2px solid var(--Speech-Bubble-Border);
-	border-right:2px solid var(--Speech-Bubble-Border);
+	border-left:2px solid var(--Main-Color);
+	border-right:2px solid var(--Main-Color);
 }
 
 #speech-txt {
 	/*width:calc(100% - 24px);*/
-	padding:10px;
+	padding: 10px 40px;
 	font-size:25px;
 	color:var(--Speech-Bubble-Text);
 	text-align:center;
 	background:var(--Speech-Bubble-Background);
-	border-left:2px solid var(--Speech-Bubble-Border);
-	border-right:2px solid var(--Speech-Bubble-Border);
+	border-left:2px solid var(--Main-Color);
+	border-right:2px solid var(--Main-Color);
 }
 
 #speech-arrow {
@@ -354,16 +351,16 @@ div.game-container {
 	width:8px;
 	height:8px;
 	background:var(--Speech-Bubble-Background);
-	border-left:2px solid var(--Speech-Bubble-Border);
-	border-right:2px solid var(--Speech-Bubble-Border);
+	border-left:2px solid var(--Main-Color);
+	border-right:2px solid var(--Main-Color);
 }
 
 #arrow-x {
 	width:6px;
 	height:2px;
 	background:var(--Speech-Bubble-Background);
-	border-left:2px solid var(--Speech-Bubble-Border);
-	border-right:2px solid var(--Speech-Bubble-Border);
+	border-left:2px solid var(--Main-Color);
+	border-right:2px solid var(--Main-Color);
 }
 
 #arrow-y {
@@ -371,15 +368,15 @@ div.game-container {
 	width:6px;
 	height:2px;
 	background:var(--Speech-Bubble-Background);
-	border-left:2px solid var(--Speech-Bubble-Border);
-	border-right:2px solid var(--Speech-Bubble-Border);
+	border-left:2px solid var(--Main-Color);
+	border-right:2px solid var(--Main-Color);
 }
 
 #arrow-z {
 	margin-left:-2px;
 	width:8px;
 	height:2px;
-	background:var(--Speech-Bubble-Border);
+	background:var(--Main-Color);
 }
   .character-speach
   {
@@ -402,3 +399,47 @@ div.game-container {
     }
 }
 
+.play-game-btn {
+    font-size: 25px;
+    color: white;
+    height: auto;
+    margin: 10px;
+    font-family: 'VT323';
+    position: relative;
+    text-transform: uppercase;
+    cursor: pointer;
+    display: block;
+    padding: 10px 10px;
+    background:var(--Main-Color);
+    width: auto;
+    z-index: 2;
+  }
+  
+  .play-game-btn:active {
+    top: 2px;
+  }
+  
+  .play-game-btn::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 10px;
+    bottom: 10px;
+    left: -10px;
+    right: -10px;
+    background:var(--Main-Color);
+    z-index: -1;
+  }
+  
+  .play-game-btn::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 4px;
+    bottom: 4px;
+    left: -6px;
+    right: -6px;
+    background:var(--Main-Color);
+    z-index: -1;
+  }
+  
