@@ -6,7 +6,7 @@ export default class Enemy extends Entity {
     constructor(numEnemy) {
         super(config.enemie);
         this.numEnemy = numEnemy;
-        this.originalNumber; 
+        this.originalNumber = config.enemy_lair; 
         this.aux = config.empty;
         this.isAlive = true;
     }

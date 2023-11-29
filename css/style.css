@@ -88,8 +88,8 @@ p
 }
 
 .point,.wall, .powerup, .empty ,.enemy-lair, #pacman ,.enemy{
-    width: 16px;
-    height: 16px;
+    width: 26px;
+    height: 26px;
     border-radius: 3px;
 }
 
@@ -107,7 +107,7 @@ p
 
 .point {
     content: url("../media/img/point.jpg");
-    padding: 6px;
+    padding: 8px;
     border-radius: 50%;
     box-sizing: border-box;
 }
@@ -391,8 +391,8 @@ div.game-container {
 
   @media (min-width: 16.01in) {
     .point,.wall, .powerup, .empty ,.enemy-lair, #pacman ,.enemy{
-        width: 19px;
-        height: 19px;
+        width: 29px;
+        height: 29px;
         border-radius: 3px;
     }
 
