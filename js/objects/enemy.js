@@ -7,7 +7,7 @@ export default class Enemy extends Entity {
         super(config.enemie);
         this.numEnemy = numEnemy;
         this.originalNumber = config.enemy_lair; 
-        this.aux = config.empty;
+        this.aux = config.enemy_lair
         this.isAlive = true;
     }
 

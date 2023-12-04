@@ -19,8 +19,7 @@ body {
 
 .game {
     width: 60%;
-    display: grid;
-    grid-template-columns: 1fr auto; /* Primera columna ocupa 1 fracción, segunda columna ocupa el tamaño automático */
+    display: flex;
     align-items: center;
     justify-content: center;
 }
@@ -304,7 +303,6 @@ div.game-container {
     }
   }
 
-
 #bub-part-a {
 	margin-left:6px;
 	width:calc(100% - 12px);
@@ -331,7 +329,6 @@ div.game-container {
 }
 
 #speech-txt {
-	/*width:calc(100% - 24px);*/
 	padding: 10px 40px;
 	font-size:25px;
 	color:var(--Speech-Bubble-Text);

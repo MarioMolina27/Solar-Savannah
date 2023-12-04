@@ -36,3 +36,6 @@ export let layout = [
   export const powerUpDuration = 15000;
   export const gameLoopDuration = 1000; 
   export const reapearEnemyDuration = 10000;
+
+  export const WIN_TXT = "YOU WIN";
+  export const LOSE_TXT = "YOU LOSE";

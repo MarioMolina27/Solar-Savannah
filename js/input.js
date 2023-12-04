@@ -15,25 +15,25 @@ export function inputDetected(event,pacman) {
     }
     switch (event.key) {
         case teclasFlecha.LEFT:
-            document.getElementById('speech-txt').innerHTML = "Left";
+            document.getElementById('speech-txt').innerHTML = "Esquerra";
             interval = setInterval(function () {
                 pacman.directionChange('left', false);
-            }, time); // El valor 300 representa 0.3 segundos en milisegundos
+            }, time);
             break;
         case teclasFlecha.RIGHT:
-            document.getElementById('speech-txt').innerHTML = "Right";
+            document.getElementById('speech-txt').innerHTML = "Dreta";
             interval = setInterval(function () {
                 pacman.directionChange('right', false);
             }, time);
             break;
         case teclasFlecha.UP:
-            document.getElementById('speech-txt').innerHTML = "Up";
+            document.getElementById('speech-txt').innerHTML = "Amunt";
             interval = setInterval(function () {
                 pacman.directionChange('up', false);
             }, time);
             break;
         case teclasFlecha.DOWN:
-            document.getElementById('speech-txt').innerHTML = "Down";
+            document.getElementById('speech-txt').innerHTML = "Abaix";
             interval = setInterval(function () {
                 pacman.directionChange('down', false);
             }, time);

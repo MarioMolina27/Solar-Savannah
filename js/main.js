@@ -16,10 +16,12 @@ export let totalPowerUps;
 let btnPlay = document.querySelector(".play-game-btn");
 let gameContainer = document.querySelector(".game-container");
 let speechBubble = document.getElementById("speech-txt");
+let characterSpeech = document.getElementById("character-speech");
 
 
 btnPlay.addEventListener("click", function()
 {
+    characterSpeech.style.width ="30%";
     speechBubble.innerText = "Començem!";
     gameContainer.style.display = "flex";
     gameBoard.pacman.createHearts();

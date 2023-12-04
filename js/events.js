@@ -20,7 +20,7 @@ export function nextObjectEvent(num, board) {
             {
                 clearTimeout(timeout);
                 board.pacman.canMove = false;
-                gameOver("YOU WIN");
+                gameOver(config.WIN_TXT);
             }
             break;
         case config.enemie:
@@ -40,7 +40,7 @@ export function nextObjectEvent(num, board) {
                 {
                     clearTimeout(timeout);
                     board.pacman.canMove = false;
-                    gameOver("YOU LOSE");
+                    gameOver(config.LOSE_TXT);
                 }
             }
             else
@@ -57,7 +57,7 @@ export function nextObjectEvent(num, board) {
             {
                 clearTimeout(timeout);
                 board.pacman.canMove = false;
-                gameOver("YOU WIN");
+                gameOver(config.WIN_TXT);
             }
             else 
             {
@@ -112,6 +112,15 @@ function gameOver(finishStatus)
     resetBtn.addEventListener('click', function (event) {
         window.location.reload();
     });
+
+    if (finishStatus === config.WIN_TXT) 
+    {
+        document.getElementById('speech-txt').innerHTML = "FELICITATS!";
+    }
+    else if(finishStatus === config.LOSE_TXT)
+    {
+        document.getElementById('speech-txt').innerHTML = "HO SENTO!";
+    }
 }
 
 function refreshScoreScreen(board)
